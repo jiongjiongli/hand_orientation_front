@@ -13,5 +13,6 @@ npm create vite@latest hand_orientation_front -- --template react
 cd hand_orientation_front
 npm install
 npm run dev
+npm install react-dropzone
 ```
 
