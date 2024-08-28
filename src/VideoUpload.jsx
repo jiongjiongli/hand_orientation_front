@@ -1,13 +1,14 @@
 import React, { useState } from 'react';
 import { useDropzone } from 'react-dropzone';
 
-function VideoUpload() {
+function VideoUpload({ onFileUpload }) {
   const [videoFile, setVideoFile] = useState(null);
 
   const onDrop = (acceptedFiles) => {
     const file = acceptedFiles[0];
     const url = URL.createObjectURL(file);
     setVideoFile(url);
+    onFileUpload(file.name, url);  // Pass the file name and URL to the parent component
     // console.log('file:', file);
     // console.log('url:', url);
   };
@@ -22,6 +23,7 @@ function VideoUpload() {
     const file = e.target.files[0];
     const url = URL.createObjectURL(file);
     setVideoFile(url);
+    onFileUpload(file.name, url);  // Pass the file name and URL to the parent component
   };
 
   return (
@@ -59,6 +61,7 @@ function VideoUpload() {
       <div style={{ marginTop: '20px' }}>
         <video src={videoFile} controls width="400" height="200"/>
       </div>
+
     </div>
   );
 }

@@ -7,7 +7,19 @@ function VideoComparison() {
   const [timer, setTimer] = useState(null);
   const [videoFile, setVideoFile] = useState(null);
 
+  const [fileName, setFileName] = useState(null);
+  const [filePath, setFilePath] = useState(null);
+
+  const handleFileUpload = (name, path) => {
+    setStatus('Not started');
+    setVideoFile('');
+    setFileName(name);
+    setFilePath(path);
+  };
+
   const handleCompare = () => {
+    setStatus('Not started');
+    setVideoFile('');
     // Reset elapsed time and start the timer
     setElapsedTime(0);
     const secondsElapsed = 0;
@@ -29,13 +41,17 @@ function VideoComparison() {
 
     setTimer(newTimer);
 
-    const timeout_ms = 3 * 1000;
+    const timeout_ms = Math.floor(Math.random() * 5) * 1000;
 
     // Simulate processing time
     setTimeout(() => {
       clearInterval(newTimer);
-      const outout_video_file = '/videos/output_cut_down.mp4'
-      setVideoFile(outout_video_file);
+      const output_video_files = {
+        'VID20240827084519.mp4': '/videos/output_rotate.mp4',
+        'VID20240827150014.mp4': '/videos/output_updown.mp4'
+      };
+      // console.log('fileName:', fileName);
+      setVideoFile(output_video_files[fileName]);
       setStatus('Completed! Please see the comparison result below.');
     }, timeout_ms);
   };
@@ -55,10 +71,15 @@ function VideoComparison() {
           borderRadius: '5px'
         }}>
           <h2>Upload Student Video</h2>
-          <VideoUpload />
+          <VideoUpload onFileUpload={handleFileUpload} />
         </div>
       </div>
-      <button onClick={handleCompare}>Compare</button>
+      <div style={{
+        border: '2px solid #ccc',
+        borderRadius: '5px'
+      }}>
+        <button onClick={handleCompare}>Compare</button>
+      </div>
       <div style={{
         border: '2px solid #ccc',
         borderRadius: '5px'
