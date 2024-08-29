@@ -48,7 +48,9 @@ function VideoComparison() {
       clearInterval(newTimer);
       const output_video_files = {
         'VID20240827084519.mp4': '/videos/output_rotate.mp4',
-        'VID20240827150014.mp4': '/videos/output_updown.mp4'
+        'VID20240827150014.mp4': '/videos/output_updown.mp4',
+        'VID20240828190345.mp4': '/videos/output_rotate_stu_correct.mp4',
+        'VID20240828190100.mp4': '/videos/output_updown_stu_correct.mp4'
       };
       // console.log('fileName:', fileName);
       setVideoFile(output_video_files[fileName]);
