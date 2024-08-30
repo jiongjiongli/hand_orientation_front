@@ -1,0 +1,27 @@
+.option-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin: 0; /* Remove any margin */
+  padding: 0; /* Remove any padding */
+  box-sizing: border-box; /* Includes padding and border in width calculation */
+}
+
+.option-container span {
+  flex: 1;
+  text-align: center; /* Optional: Adjust text alignment if needed */
+  padding: 0px; /* Optional: Add padding for spacing */
+}
+.option-container.option-header {
+  border: 2px solid #ccc;
+  border-radius: 5px;
+}
+
+
+/* Ensure the dropdown has a fixed height and scrollable content */
+.menu-list {
+  max-height: 200px; /* Adjust based on your design */
+  overflow-y: auto;  /* Enable vertical scrolling */
+  border: 1px solid #ccc; /* Add border for better appearance */
+  width: 100%; /* Ensure menu takes full width of container */
+}

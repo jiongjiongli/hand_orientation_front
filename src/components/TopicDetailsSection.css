@@ -1,0 +1,30 @@
+.topic-details-section {
+  width: 100%; /* Ensure it takes full width of its parent */
+  height: 100%;
+  box-sizing: border-box; /* Includes padding and border in width calculation */
+  margin: 0; /* Remove any margin that could cause extra space */
+  padding: 0; /* Remove any padding */
+  border: 1px solid #ccc; /* Set a light gray border */
+  border-radius: 4px; /* Optional: Rounded corners for better appearance */
+  /*resize: none;  Prevent resizing */
+  /*overflow: auto;  Allow scrolling if content overflows */
+  display: flex; /* Use flexbox to align children */
+  flex-direction: column; /* Align children in a column */
+}
+
+.textarea-autosize {
+  width: 300px;
+  height: 100%;
+  box-sizing: border-box; /* Includes padding and border in width calculation */
+  border-radius: 4px;
+  padding: 4px; /*Padding for content spacing inside the textarea*/
+  resize: none;
+  overflow: auto;
+  background-color: #f9f9f9;
+  margin: 0; /* Ensure no margin */
+}
+
+.textarea-autosize:focus {
+  outline: none; /* Remove default browser outline */
+  border-color: blue; /* Change border color when focused */
+}

@@ -1,0 +1,52 @@
+.analyze-section {
+  display: flex;
+  flex-direction: column;
+  /*padding: 20px;*/
+  border: 2px solid #ccc;
+  border-radius: 5px;
+  padding: 0; /* Ensure no padding inside analyze-section */
+  margin: 0; /* Ensure no margin */
+  gap: 0; /* Control any gap between flex items */
+}
+
+.content-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start; /* Align items at the start to avoid stretching */
+  margin: 0; /* Remove any margin */
+  padding: 0; /* Remove any padding */
+  /*margin-top: 20px;*/
+}
+
+.left-section,
+.mid-section,
+.right-section {
+  flex: 1;
+  border: 2px solid #ccc;
+  border-radius: 5px;
+  margin: 0; /* Remove any margin */
+  padding: 0; /* Remove any padding */
+  box-sizing: border-box; /* Includes padding and border in width calculation */
+  height: 300px;
+}
+
+.left-section {
+  /*border-right: 1px solid #ccc;*/
+  /*margin-right: 1px;*/
+  width: 400px;
+}
+
+
+.mid-section {
+  width: 300px;
+}
+
+.right-section {
+  /*border-left: 1px solid #ccc;*/
+  /*margin-left: 1px;*/
+  width: 400px;
+}
+
+button {
+  margin-bottom: 20px;
+}

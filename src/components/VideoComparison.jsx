@@ -41,7 +41,7 @@ function VideoComparison() {
 
     setTimer(newTimer);
 
-    const timeout_ms = Math.floor(Math.random() * 5) * 1000;
+    const timeout_ms = (5 + Math.floor(Math.random() * 5)) * 1000;
 
     // Simulate processing time
     setTimeout(() => {

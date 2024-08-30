@@ -12,7 +12,13 @@ npm create vite@latest hand_orientation_front -- --template react
 
 cd hand_orientation_front
 npm install
-npm install react-dropzone
+npm install react-dropzone # Drag and Upload file
+npm install react-select # Scrollable list
+npm install react-textarea-autosize # Text
+# npm install react-table
+
+
+
 npm run dev
 ```
 
