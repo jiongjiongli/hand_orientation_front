@@ -71,13 +71,15 @@ function ScrollableMultiColumnSelect( {options, handleChange} ) {
           maxHeight: '100%',
           // border: '1px solid red',
           boxSizing: 'border-box',
+          margin: '0',
+          padding: '0',
         }}>
           <Select
             options={options}
             value={selectedOption} // Pass the selected option
             onChange={handleSelectChange}
-            maxMenuHeight={200}
-            minMenuHeight={200}
+            maxMenuHeight={207}
+            minMenuHeight={207}
             noOptionsMessage={() => 'No options available'} // Custom message
             isMulti={false}
             isSearchable={false} // Disable search bar
@@ -89,7 +91,13 @@ function ScrollableMultiColumnSelect( {options, handleChange} ) {
               Control: EmptyComponent
             }} // Use custom Option component
             placeholder={"Select an item..."}
-
+            styles={{
+              menu: (provided, state) => ({
+                 ...provided,
+                 marginTop: 0,
+                 marginBottom: 0,
+              }),
+            }}
           />
         </div>
 
