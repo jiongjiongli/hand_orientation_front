@@ -6,7 +6,7 @@ import TopicDetailsSection from './TopicDetailsSection.jsx'
 import ScrollableMultiColumnSelect from './ScrollableMultiColumnSelect'
 import './AnalyzeSection.css' // Import the CSS file for styling
 
-function AnalyzeSection({ onAnalyze, onSelectTopic, topics, topicDetails, videoPath }) {
+function AnalyzeSection({ onAnalyze, onSelectTopic, topics, topicDetails, videoClipPath }) {
   return (
     <div className="analyze-section">
       {/* <h2>Analyze Teacher Video</h2> */}
@@ -15,7 +15,7 @@ function AnalyzeSection({ onAnalyze, onSelectTopic, topics, topicDetails, videoP
       </div>
 
       <div style={{
-          border: '2px solid #ccc',
+          border: '1px solid #ccc',
           borderRadius: '5px'
         }}>
         <h3>Analyze Result</h3>
@@ -32,8 +32,8 @@ function AnalyzeSection({ onAnalyze, onSelectTopic, topics, topicDetails, videoP
           </div>
 
           <div className="right-section">
-            <h3>Teacher Video Section</h3>
-            <video src={videoPath} controls width={"400px"} height={"200px"} />
+            <h3>Teacher Video Clip</h3>
+            <video src={videoClipPath} controls width={'100%'} />
           </div>
         </div>
       </div>

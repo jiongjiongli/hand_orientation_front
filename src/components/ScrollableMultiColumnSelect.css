@@ -13,7 +13,7 @@
   padding: 0px; /* Optional: Add padding for spacing */
 }
 .option-container.option-header {
-  border: 2px solid #ccc;
+  border: 1px solid #ccc;
   border-radius: 5px;
 }
 

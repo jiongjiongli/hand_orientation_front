@@ -17,8 +17,6 @@ npm install react-select # Scrollable list
 npm install react-textarea-autosize # Text
 # npm install react-table
 
-
-
 npm run dev
 ```
 

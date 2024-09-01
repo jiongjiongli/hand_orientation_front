@@ -3,14 +3,27 @@ import Select, { components } from 'react-select';
 import './ScrollableMultiColumnSelect.css'; // Import the CSS file for styling
 
 
+const getSubstring = (input, seperator) => {
+  // Find the position of the first seperator
+  const dotIndex = input.indexOf(seperator);
+
+  // If seperator is found, extract substring up to that point
+  if (dotIndex !== -1) {
+    return input.slice(0, dotIndex);
+  }
+
+  // If no seperator is found, return the original string
+  return input;
+};
+
 // Custom Option component to create a multi-column layout
 const CustomOption = (props) => {
   return (
     <components.Option {...props}>
       <div className="option-container">
-        <span>{props.data.title}</span>
-        <span>{props.data.startTime}</span>
-        <span>{props.data.endTime}</span>
+        <span>{props.data.step}</span>
+        <span>{getSubstring(props.data.start_time, '.')}</span>
+        <span>{getSubstring(props.data.end_time, '.')}</span>
       </div>
     </components.Option>
   );
@@ -56,7 +69,7 @@ function ScrollableMultiColumnSelect( {options, handleChange} ) {
           width: '100%',
           height: '100%',
           maxHeight: '100%',
-          border: '1px solid blue',
+          // border: '1px solid red',
           boxSizing: 'border-box',
         }}>
           <Select

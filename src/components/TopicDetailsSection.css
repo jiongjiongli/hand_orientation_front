@@ -4,8 +4,8 @@
   box-sizing: border-box; /* Includes padding and border in width calculation */
   margin: 0; /* Remove any margin that could cause extra space */
   padding: 0; /* Remove any padding */
-  border: 1px solid #ccc; /* Set a light gray border */
-  border-radius: 4px; /* Optional: Rounded corners for better appearance */
+  /*border: 1px solid #ccc;  Set a light gray border */
+  /*border-radius: 4px;  Optional: Rounded corners for better appearance */
   /*resize: none;  Prevent resizing */
   /*overflow: auto;  Allow scrolling if content overflows */
   display: flex; /* Use flexbox to align children */

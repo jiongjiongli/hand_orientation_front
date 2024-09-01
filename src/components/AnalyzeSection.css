@@ -2,7 +2,7 @@
   display: flex;
   flex-direction: column;
   /*padding: 20px;*/
-  border: 2px solid #ccc;
+  border: 1px solid #ccc;
   border-radius: 5px;
   padding: 0; /* Ensure no padding inside analyze-section */
   margin: 0; /* Ensure no margin */
@@ -22,31 +22,32 @@
 .mid-section,
 .right-section {
   flex: 1;
-  border: 2px solid #ccc;
+  border: 1px solid #ccc;
   border-radius: 5px;
   margin: 0; /* Remove any margin */
   padding: 0; /* Remove any padding */
   box-sizing: border-box; /* Includes padding and border in width calculation */
   height: 300px;
+  width: 350px;
 }
 
 .left-section {
   /*border-right: 1px solid #ccc;*/
   /*margin-right: 1px;*/
-  width: 400px;
+  /*width: 400px;*/
 }
 
 
 .mid-section {
-  width: 300px;
+  /*width: 400px;*/
 }
 
 .right-section {
   /*border-left: 1px solid #ccc;*/
   /*margin-left: 1px;*/
-  width: 400px;
+  /*width: 400px;*/
 }
 
-button {
+/*button {
   margin-bottom: 20px;
-}
+}*/
