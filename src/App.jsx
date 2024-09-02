@@ -1,132 +1,89 @@
 // import VideoComparison from './VideoComparison.jsx'
-import { useEffect, useState } from 'react'
-import VideoUploadSection from './components/VideoUploadSection.jsx'
-import AnalyzeSection from './components/AnalyzeSection.jsx'
-import CompareSection from './components/CompareSection.jsx'
+import React, { useEffect, useState } from 'react'
+import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
+import { scrollToTop } from './utils/scrollToTop'; // Import the scrollToTop function
+
+import MainSection from './components/MainSection.jsx'
+import Analyze from './components/Analyze';
+import Compare from './components/Compare';
 import './App.css'
 
 function App() {
-  const [infoData, setInfoData] = useState(null);
-  const [compareData, setCompareData] = useState(null);
-
-  const [teacherVideoPath, setTeacherVideoPath] = useState(null);
-  const [stuVideoPath, setStuVideoPath] = useState(null);
-
-  const [teacherFile, setTeacherFile] = useState(null);
-  const [stuFile, setStuFile] = useState(null);
-
-  const [topics, setTopics] = useState([]);
-  const [selectedTopic, setSelectedTopic] = useState(null);
-  const [topicDetails, setTopicDetails] = useState("");
-
-  const [comparisonResult, setComparisonResult] = useState(null);
-  const [videoClipPath, setVideoClipPath] = useState(null);
-
-  useEffect(() => {
-    // Fetch the JSON file from the public directory
-    fetch('/preprocess_data_001.json')
-      .then((response) => {
-        if (!response.ok) {
-          throw new Error('Network response was not ok');
-        }
-        return response.json();
-      })
-      .then((data) => {
-        setInfoData(data); // Update state with the fetched data
-      })
-      .catch((error) => {
-        console.error('Error fetching the JSON file:', error);
-      });
-
-    fetch('/compare_data.json')
-      .then((response) => {
-        if (!response.ok) {
-          throw new Error('Network response was not ok');
-        }
-        return response.json();
-      })
-      .then((data) => {
-        setCompareData(data); // Update state with the fetched data
-      })
-      .catch((error) => {
-        console.error('Error fetching the JSON file:', error);
-      });
-  }, []);
-
-  const handleTeacherUpload = (file) => {
-    setTeacherFile(file);
-
-    setComparisonResult('');
-  };
-
-  const handleStudentUpload = (file) => {
-    setStuFile(file);
-
-    setComparisonResult('');
-  };
-
-  const analyzeVideo = () => {
-    // Simulate analyzing the video and retrieving topics
-    const fileData = infoData.find((item) => item.file_path === teacherFile.name);
-    const topics = fileData ? fileData.steps : [];
-    const updatedTopics = topics.map((item, index) => ({ ...item, value: index }));
-    setTopics(updatedTopics);
-    // setTopics([
-    //   { value: "1", title: "劈丝", startTime: "00:00", endTime: "01:00", detail: "Detail about 劈丝.", videoPath: "/videos/teacher_input_updown.mp4" },
-    //   { value: "2", title: "梳绒", startTime: "01:01", endTime: "02:00", detail: "Detail about 梳绒.", videoPath: "/videos/teacher_input_updown.mp4" },
-    //   { value: "3", title: "上铜丝", startTime: "02:01", endTime: "03:00", detail: "Detail about 上铜丝.", videoPath: "/videos/teacher_input_rotate.mp4" },
-    //   { value: "4", title: "搓紧铜丝", startTime: "03:01", endTime: "04:00", detail: "Detail about the topic.", videoPath: "/videos/teacher_input_rotate.mp4" },
-    //   { value: "5", title: "剪绒条", startTime: "04:01", endTime: "05:00", detail: "Detail about the topic.", videoPath: "/videos/teacher_input_rotate.mp4" },
-    //   { value: "6", title: "滚绒", startTime: "05:01", endTime: "06:00", detail: "Detail about the topic.", videoPath: "/videos/teacher_input_rotate.mp4" },
-    //   { value: "7", title: "打尖", startTime: "06:01", endTime: "07:00", detail: "Detail about the topic.", videoPath: "/videos/teacher_input_rotate.mp4" },
-    //   { value: "8", title: "定型", startTime: "07:01", endTime: "08:00", detail: "Detail about the topic.", videoPath: "/videos/teacher_input_rotate.mp4" },
-    // ]);
-  };
-
-  const selectTopic = (topic) => {
-    // setSelectedTopic(topic);
-    // console.log('topic:', topic);
-    // Simulate retrieving topic details
-    setTopicDetails(topic['text']);
-    const video_name = topic['input_video_path'];
-    setVideoClipPath(`/videos/${video_name}`);
-
-    setStuVideoPath('');
-    setComparisonResult('');
-  };
-
-  const compareVideos = () => {
-    // Simulate video comparison and return a new video URL
-    const fileData = compareData.find((item) => item.stu_file_name === stuFile.name);
-    const video_file_path = fileData ? fileData.video_file_path : '';
-    setComparisonResult(video_file_path);
-  };
-
   return (
     <div>
-        {/* <h1>Video Comparison</h1> */}
-        {/* <VideoComparison /> */}
-        <VideoUploadSection
-          videoPath={teacherVideoPath}
-          setVideoPath={setTeacherVideoPath}
-          onFileUpload={handleTeacherUpload}
-          label="Teacher" />
+        {/* <MainSection /> */}
+        <Router>
+            <div>
+                {/* Navigation Bar */}
+                <nav style={{
+                    position: 'fixed',  // Fixes the navbar at the top
+                    top: 0,
+                    left: 0,            // Ensures the navbar starts from the left edge
+                    width: '100%',
+                    backgroundColor: 'white',
+                    zIndex: 1000,  // Keeps the navbar above other content
+                    width: '100%',
+                    padding: '10px',
+                    borderBottom: '1px solid #ddd',
+                    display: 'flex',
+                    justifyContent: 'center',
+                }}>
+                  <ul style={{
+                    listStyleType: 'none',
+                    margin: 0,
+                    padding: 0,
+                    display: 'flex',
+                    gap: '20px',
+                  }}>
+                    <li>
+                      <Link
+                        to="/analyze"
+                        onClick={scrollToTop}  // Scroll to top on click
+                        style={{
+                            // textDecoration: 'none',
+                            textDecoration: 'underline', // Adds underline
+                            color: '#007bff',
+                            padding: '8px 16px',  // Adds space around the text
+                            // borderBottom: '2px solid #007bff',  // Adds a border
+                            // borderRadius: '4px',  // Rounds the corners of the border
+                            transition: 'border-color 0.3s', // Smooth transition for border color
+                        }}
+                      >
+                        Video Analysis
+                      </Link>
+                    </li>
+                    <li>
+                      <Link
+                        to="/compare"
+                        onClick={scrollToTop}  // Scroll to top on click
+                        style={{
+                            // textDecoration: 'none',
+                            textDecoration: 'underline', // Adds underline
+                            color: '#007bff',
+                            padding: '8px 16px',  // Adds space around the text
+                            // borderBottom: '2px solid #007bff',  // Adds a border
+                            // borderRadius: '4px',  // Rounds the corners of the border
+                            transition: 'border-color 0.3s', // Smooth transition for border color
+                        }}
+                        onMouseOver={(e) => e.target.style.color = '#0056b3'} // Darker color on hover
+                        onMouseOut={(e) => e.target.style.color = '#007bff'} // Reset color on hover out
+                      >
+                        Video Comparison
+                      </Link>
+                    </li>
+                  </ul>
+                </nav>
 
-        <AnalyzeSection
-            onAnalyze={analyzeVideo}
-            onSelectTopic={selectTopic}
-            topics={topics}
-            topicDetails={topicDetails}
-            videoClipPath={videoClipPath}
-        />
-
-        <VideoUploadSection
-          videoPath={stuVideoPath}
-          setVideoPath={setStuVideoPath}
-          onFileUpload={handleStudentUpload}
-          label="Student" />
-
-        <CompareSection onCompare={compareVideos} comparisonResult={comparisonResult} />
+                {/* Main Content */}
+                <div style={{ padding: '20px' }}>
+                  <Routes>
+                    {/* Default route points to the Analyze component */}
+                    <Route path="/analyze" element={<Analyze />} />
+                    <Route path="/compare" element={<Compare />} />
+                  </Routes>
+                </div>
+            </div>
+    </Router>
     </div>
   )
 }
