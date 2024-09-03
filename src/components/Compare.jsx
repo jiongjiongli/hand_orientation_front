@@ -3,7 +3,6 @@ import VideoUploadSec from './VideoUploadSec.jsx'
 import CompareSection from './CompareSection.jsx'
 
 const Compare = () => {
-  const [infoData, setInfoData] = useState(null);
   const [compareData, setCompareData] = useState(null);
 
   const [teacherVideoPath, setTeacherVideoPath] = useState(null);
@@ -21,20 +20,6 @@ const Compare = () => {
 
   useEffect(() => {
     // Fetch the JSON file from the public directory
-    fetch('/preprocess_data_001.json')
-      .then((response) => {
-        if (!response.ok) {
-          throw new Error('Network response was not ok');
-        }
-        return response.json();
-      })
-      .then((data) => {
-        setInfoData(data); // Update state with the fetched data
-      })
-      .catch((error) => {
-        console.error('Error fetching the JSON file:', error);
-      });
-
     fetch('/compare_data.json')
       .then((response) => {
         if (!response.ok) {
@@ -53,7 +38,6 @@ const Compare = () => {
   const handleTeacherUpload = (file) => {
     setTeacherFile(file);
     setStuVideoPath('');
-
     setComparisonResult('');
   };
 

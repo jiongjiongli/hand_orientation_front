@@ -2,8 +2,7 @@ import { useState } from 'react';
 import { useDropzone } from 'react-dropzone';
 import TextareaAutosize from 'react-textarea-autosize'
 
-function VideoUploadTeacherSection({ videoPath, setVideoPath, onFileUpload, label }) {
-    const concept = "绒花，谐音“荣华”，象征着吉祥和祝福。绒花以天然丝绸和铜丝为原材料制成，过去多用于节日和仪式装饰等民间习俗。绒花的主题设计大多取材于民间的吉祥符号，表达对好运的美好愿望。 制作绒花的过程复杂，需经过一系列精细的手工操作，包括选材、染色、金属丝软化、钩织、点缀和花卉制作等步骤。这些技艺不仅体现了工匠精神，还在实践中传承了中国民间智慧和工艺经验。";
+function VideoUploadTeacherSection({ videoPath, setVideoPath, onFileUpload, conceptData, label }) {
     const onDrop = (acceptedFiles) => {
         const file = acceptedFiles[0];
         const url = URL.createObjectURL(file);
@@ -129,7 +128,7 @@ function VideoUploadTeacherSection({ videoPath, setVideoPath, onFileUpload, labe
                         // borderRadius: '5px',
                         width: '100%',
                         height: '100%',
-                        padding: '18px',
+                        // padding: '10px',
                         boxSizing: 'border-box',
                         textAlign: 'center',
                         margin: '0',
@@ -138,7 +137,7 @@ function VideoUploadTeacherSection({ videoPath, setVideoPath, onFileUpload, labe
                             readOnly
                             className="textarea-autosize"
                             // minRows={6}
-                            value={concept}
+                            value={conceptData}
                             style={{
                               width: '100%',
                               height: '100%',

@@ -5,7 +5,7 @@ import AnalyzeSection from './AnalyzeSection.jsx'
 
 const Analyze = () => {
   const [infoData, setInfoData] = useState(null);
-  const [compareData, setCompareData] = useState(null);
+  const [conceptData, setConceptData] = useState(null);
 
   const [teacherVideoPath, setTeacherVideoPath] = useState(null);
 
@@ -33,7 +33,7 @@ const Analyze = () => {
         console.error('Error fetching the JSON file:', error);
       });
 
-    fetch('/compare_data.json')
+      fetch('/concept.json')
       .then((response) => {
         if (!response.ok) {
           throw new Error('Network response was not ok');
@@ -41,7 +41,7 @@ const Analyze = () => {
         return response.json();
       })
       .then((data) => {
-        setCompareData(data); // Update state with the fetched data
+        setConceptData(data['en']); // Update state with the fetched data
       })
       .catch((error) => {
         console.error('Error fetching the JSON file:', error);
@@ -85,6 +85,7 @@ const Analyze = () => {
           videoPath={teacherVideoPath}
           setVideoPath={setTeacherVideoPath}
           onFileUpload={handleTeacherUpload}
+          conceptData={conceptData}
           label="Teacher"
         />
 
