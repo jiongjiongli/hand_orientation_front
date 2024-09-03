@@ -84,6 +84,7 @@ function ScrollableMultiColumnSelect( {options, handleChange} ) {
             isMulti={false}
             isSearchable={false} // Disable search bar
             menuIsOpen={true} // Keep the menu always open
+            menuShouldScrollIntoView={false}
             // components={{ Option: CustomOption, MenuList: CustomMenuList }} // Use custom Option component
             // components={{ Option: CustomOption}}
             components={{
